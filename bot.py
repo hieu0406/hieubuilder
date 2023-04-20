@@ -98,9 +98,9 @@ PROCEED_MESSAGE = f"""
 📢 Airdrop Rules
 
 ✏️ Mandatory Tasks:
-- Join our Telegram group(s)
-- Follow our Twitter page(s)
-- Join our Discord server(s)
+- Join our Telegram group
+- Follow our Twitter page
+- Join our Discord server
 
 NOTE: Users found cheating would be disqualified & banned immediately.
 
