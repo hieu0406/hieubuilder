@@ -98,9 +98,9 @@ PROCEED_MESSAGE = f"""
 📢 Airdrop Rules
 
 ✏️ Mandatory Tasks:
-- Join our Telegram group
-- Follow our Twitter page
-- Join our Discord server
+- Join our Telegram
+- Follow our Twitter
+- Join our Discord
 
 NOTE: Users found cheating would be disqualified & banned immediately.
 
@@ -109,17 +109,17 @@ Airdrop Date: *{AIRDROP_DATE}*{EXPLORER_URL}
 """
 
 MAKE_SURE_TELEGRAM = f"""
-🔹 Do not forget to join our Telegram group(s)
+🔹 Do not forget to join our Telegram
 {TELEGRAM_LINKS}
 """
 
 FOLLOW_TWITTER_TEXT = f"""
-🔹 Follow our Twitter page(s)
+🔹 Follow our Twitter
 {TWITTER_LINKS}
 """
 
 JOIN_DISCORD_TEXT = f'''
-🔹 Join our Discord server(s)
+🔹 Join our Discord
 {DISCORD_LINKS}
 '''
 
@@ -129,7 +129,7 @@ Type in *your Wallet Address*
 Please make sure your wallet supports the *{AIRDROP_NETWORK}*
 
 Example:
-0xdEAD000000000000000042069420694206942069
+0x2465176C461AfB316ebc773C61fAEe85A6515DAA
 
 _Incorrect Details? Use_ /restart _command to start over._
 """
@@ -295,7 +295,7 @@ def follow_twitter(update, context):
             ))
             return FOLLOW_TWITTER
     update.message.reply_text(text=FOLLOW_TWITTER_TEXT, parse_mode=telegram.ParseMode.MARKDOWN)
-    update.message.reply_text(text="Type in the link to *your Twitter profile* to proceed.\n\nExample: \nhttps://twitter.com/example", parse_mode=telegram.ParseMode.MARKDOWN, reply_markup=ReplyKeyboardMarkup(
+    update.message.reply_text(text="Type in the link to *your Twitter profile* to proceed.\n\nExample: \nhttps://twitter.com/xdoidgames", parse_mode=telegram.ParseMode.MARKDOWN, reply_markup=ReplyKeyboardMarkup(
         [["Cancel"]]
     ))
     return JOIN_DISCORD
@@ -306,13 +306,13 @@ def submit_address(update, context):
     if not user.id in USERINFO:
         return startAgain(update, context)
     if users.find({"twitter_username": update.message.text.strip()}).count() != 0:
-        update.message.reply_text(text="Twitter Link Already Exists. Try again!\n\nExample: \nhttps://twitter.com/example", parse_mode=telegram.ParseMode.MARKDOWN, reply_markup=ReplyKeyboardMarkup(
+        update.message.reply_text(text="Twitter Link Already Exists. Try again!\n\nExample: \nhttps://twitter.com/xdroidgames", parse_mode=telegram.ParseMode.MARKDOWN, reply_markup=ReplyKeyboardMarkup(
             [["Cancel"]]
         ))
         return JOIN_DISCORD
     USERINFO[user.id].update({"twitter_username": update.message.text.strip()})
     update.message.reply_text(text=JOIN_DISCORD_TEXT, parse_mode=telegram.ParseMode.MARKDOWN)
-    update.message.reply_text(text="Type in *your Discord username* to proceed.\n\nExample: \nExample#1234 \n\n_Incorrect Details? Use_ /restart _command to start over._", parse_mode=telegram.ParseMode.MARKDOWN, reply_markup=ReplyKeyboardMarkup(
+    update.message.reply_text(text="Type in *your Discord username* to proceed.\n\nExample: \nXdroidgames#1234 \n\n_Incorrect Details? Use_ /restart _command to start over._", parse_mode=telegram.ParseMode.MARKDOWN, reply_markup=ReplyKeyboardMarkup(
         [["Cancel"],["/restart"]]
     ))
     return SUBMIT_ADDRESS
@@ -322,7 +322,7 @@ def submit_discord(update, context):
     if not user.id in USERINFO:
         return startAgain(update, context)
     if users.find({"discord_username": update.message.text.strip()}).count() != 0:
-        update.message.reply_text(text="Discord Username Already Exists. Try again!\n\nExample: \nExample#1234", parse_mode=telegram.ParseMode.MARKDOWN, reply_markup=ReplyKeyboardMarkup(
+        update.message.reply_text(text="Discord Username Already Exists. Try again!\n\nExample: \nXdroidgames#1234", parse_mode=telegram.ParseMode.MARKDOWN, reply_markup=ReplyKeyboardMarkup(
             [["Cancel"],["/restart"]]
         ))
         return SUBMIT_ADDRESS
@@ -348,7 +348,7 @@ def end_conversation(update, context):
     if not user.id in USERINFO:
         return startAgain(update, context)
     if users.find({"bep20": update.message.text}).count() != 0:
-        update.message.reply_text(text="Wallet Address Already Exists. Try again!\n\nExample: \n0xdEAD000000000000000042069420694206942069", parse_mode=telegram.ParseMode.MARKDOWN, reply_markup=ReplyKeyboardMarkup(
+        update.message.reply_text(text="Wallet Address Already Exists. Try again!\n\nExample: \0x2465176C461AfB316ebc773C61fAEe85A6515DAA", parse_mode=telegram.ParseMode.MARKDOWN, reply_markup=ReplyKeyboardMarkup(
         [["Cancel"],["/restart"]]
     ))
         return END_CONVERSATION
@@ -493,19 +493,19 @@ def error_telegram(update,context):
     return FOLLOW_TWITTER
 
 def error_twitter(update,context):
-    update.message.reply_text(text="Invalid Twitter Link. Try again! \n\nExample: \nhttps://twitter.com/example", parse_mode=telegram.ParseMode.MARKDOWN, reply_markup=ReplyKeyboardMarkup(
+    update.message.reply_text(text="Invalid Twitter Link. Try again! \n\nExample: \nhttps://twitter.com/xdroidgames", parse_mode=telegram.ParseMode.MARKDOWN, reply_markup=ReplyKeyboardMarkup(
         [["Cancel"]]
     ))
     return JOIN_DISCORD
 
 def error_discord(update,context):
-    update.message.reply_text(text="Invalid Discord Username. Try again!\n\nExample: \nExample#1234", parse_mode=telegram.ParseMode.MARKDOWN, reply_markup=ReplyKeyboardMarkup(
+    update.message.reply_text(text="Invalid Discord Username. Try again!\n\nExample: \nXdroidgams#1234", parse_mode=telegram.ParseMode.MARKDOWN, reply_markup=ReplyKeyboardMarkup(
         [["Cancel"],["/restart"]]
     ))
     return SUBMIT_ADDRESS
 
 def error_bsc(update,context):
-    update.message.reply_text(text="Invalid Wallet Address. Try again!\n\nExample: \n0xdEAD000000000000000042069420694206942069", parse_mode=telegram.ParseMode.MARKDOWN, reply_markup=ReplyKeyboardMarkup(
+    update.message.reply_text(text="Invalid Wallet Address. Try again!\n\nExample: \0x2465176C461AfB316ebc773C61fAEe85A6515DAA", parse_mode=telegram.ParseMode.MARKDOWN, reply_markup=ReplyKeyboardMarkup(
         [["Cancel"],["/restart"]]
     ))
     return END_CONVERSATION
