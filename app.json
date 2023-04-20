@@ -17,12 +17,12 @@
     "COIN_SYMBOL": {
       "description": "Coin symbol. Example: BNB, ETH",
       "required": true,
-      "value": "BETH"
+      "value": "Sy"
     },
     "COIN_NAME": {
       "description": "Coin name. Example: Bitcoin, Ethereum",
       "required": true,
-      "value": "Baby Ethereum"
+      "value": "Name Token"
     },
     "AIRDROP_AMOUNT": {
       "description": "How many tokens are you going to give? Example: 10000. Do not include ',' must be float number",
